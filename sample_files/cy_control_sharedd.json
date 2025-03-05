@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Database Security Hardening",
+    "framework": "CIS",
+    "description": "Enforce database security best practices such as encryption, access controls, and audit logging."
+  },
+  {
+    "name": "Insider Threat Detection",
+    "framework": "NIST",
+    "description": "Deploy monitoring tools and behavior analytics to detect and mitigate insider threats."
+  },
+  {
+    "name": "Wireless Network Security",
+    "framework": "ISO 27002",
+    "description": "Ensure secure configurations for wireless networks, including WPA3 encryption and MAC filtering."
+  },
+  {
+    "name": "Cyber Resilience Framework",
+    "framework": "ISO 22301",
+    "description": "Develop a cyber resilience strategy to ensure business continuity during cyber incidents."
+  },
+  {
+    "name": "Automated Incident Response",
+    "framework": "MITRE ATT&CK",
+    "description": "Use SOAR (Security Orchestration, Automation, and Response) to automate incident response processes."
+  },
+  {
+    "name": "Web Browser Security",
+    "framework": "CIS",
+    "description": "Implement secure web browser settings to prevent drive-by downloads and malicious scripts."
+  },
+  {
+    "name": "Security Policy Enforcement",
+    "framework": "ISO 27001",
+    "description": "Enforce security policies across the organization using automated policy management tools."
+  },
+  {
+    "name": "Biometric Authentication",
+    "framework": "ISO 27001",
+    "description": "Leverage biometric authentication methods such as fingerprint and facial recognition for secure access."
+  },
+  {
+    "name": "Security in Mergers & Acquisitions",
+    "framework": "NIST",
+    "description": "Assess cybersecurity risks and vulnerabilities during mergers, acquisitions, and divestitures."
+  },
+  {
+    "name": "Deepfake and Social Engineering Prevention",
+    "framework": "ISO 27002",
+    "description": "Implement awareness training and AI-based detection tools to prevent deepfake-related fraud and social engineering attacks."
+  }
+]

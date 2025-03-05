@@ -1,0 +1,442 @@
+[
+  {
+    "name": "Access Control",
+    "framework": "NIST",
+    "description": "Implement strict access control measures including least privilege and role-based access to protect sensitive data and systems."
+  },
+  {
+    "name": "Data Encryption",
+    "framework": "ISO 27001",
+    "description": "Ensure that sensitive data is encrypted at rest and in transit using strong cryptographic methods."
+  },
+  {
+    "name": "Endpoint Security",
+    "framework": "CIS",
+    "description": "Deploy endpoint protection solutions such as antivirus, EDR, and application whitelisting to prevent malware infections."
+  },
+  {
+    "name": "Patch Management",
+    "framework": "NIST",
+    "description": "Maintain an effective patch management program to remediate known vulnerabilities and reduce security risks."
+  },
+  {
+    "name": "Secure Software Development",
+    "framework": "OWASP",
+    "description": "Adopt secure coding practices and perform code reviews to mitigate software vulnerabilities."
+  },
+  {
+    "name": "Supply Chain Security",
+    "framework": "ISO 27036",
+    "description": "Assess and monitor security risks associated with third-party vendors and supply chain partners."
+  },
+  {
+    "name": "Multi-Factor Authentication",
+    "framework": "CIS",
+    "description": "Enforce multi-factor authentication (MFA) for all remote and privileged access to systems."
+  },
+  {
+    "name": "Cloud Security Governance",
+    "framework": "CSA CCM",
+    "description": "Implement security governance policies to manage risk in cloud environments."
+  },
+  {
+    "name": "User Awareness Training",
+    "framework": "ISO 27002",
+    "description": "Educate employees on security best practices, phishing, and social engineering risks."
+  },
+  {
+    "name": "Secure Configuration Management",
+    "framework": "CIS",
+    "description": "Maintain secure configurations for systems, applications, and network devices to reduce attack surfaces."
+  },
+  {
+    "name": "Network Segmentation",
+    "framework": "NIST",
+    "description": "Implement network segmentation to limit access between critical and non-critical systems."
+  },
+  {
+    "name": "Identity and Access Management",
+    "framework": "ISO 27001",
+    "description": "Ensure centralized identity management, role-based access, and lifecycle management for user accounts."
+  },
+  {
+    "name": "Threat Intelligence",
+    "framework": "MITRE ATT&CK",
+    "description": "Utilize threat intelligence feeds and indicators of compromise (IOCs) to detect emerging threats."
+  },
+  {
+    "name": "Data Loss Prevention",
+    "framework": "NIST",
+    "description": "Deploy DLP solutions to prevent unauthorized transmission of sensitive data."
+  },
+  {
+    "name": "Physical Security",
+    "framework": "ISO 27002",
+    "description": "Implement physical access controls, surveillance, and security policies to protect data centers and critical assets."
+  },
+  {
+    "name": "Security Logging and Monitoring",
+    "framework": "SOC 2",
+    "description": "Establish comprehensive logging and real-time monitoring to detect security incidents."
+  },
+  {
+    "name": "Vulnerability Management",
+    "framework": "CIS",
+    "description": "Conduct regular vulnerability scans and penetration tests to identify and remediate security gaps."
+  },
+  {
+    "name": "Business Continuity and Disaster Recovery",
+    "framework": "ISO 22301",
+    "description": "Develop and test a business continuity and disaster recovery plan to ensure resilience during incidents."
+  },
+  {
+    "name": "Privileged Access Management",
+    "framework": "NIST",
+    "description": "Enforce strict controls and monitoring on privileged accounts to prevent unauthorized access."
+  },
+  {
+    "name": "Secure API Management",
+    "framework": "OWASP",
+    "description": "Ensure APIs are securely authenticated, authorized, and protected from threats such as injection attacks."
+  },
+  {
+    "name": "Incident Response Plan",
+    "framework": "ISO 27035",
+    "description": "Develop an incident response plan outlining roles, responsibilities, and escalation procedures."
+  },
+  {
+    "name": "Email Security",
+    "framework": "CIS",
+    "description": "Implement email filtering, anti-phishing measures, and SPF/DKIM/DMARC to protect against email-based attacks."
+  },
+  {
+    "name": "Zero Trust Architecture",
+    "framework": "NIST",
+    "description": "Adopt a Zero Trust model where no entity is trusted by default, requiring continuous verification."
+  },
+  {
+    "name": "AI/ML Security",
+    "framework": "ISO 42001",
+    "description": "Ensure artificial intelligence and machine learning models are secure against adversarial attacks."
+  },
+  {
+    "name": "IoT Security",
+    "framework": "NIST",
+    "description": "Implement security controls for IoT devices, including access restrictions and secure firmware updates."
+  },
+  {
+    "name": "Remote Work Security",
+    "framework": "ISO 27001",
+    "description": "Secure remote work environments with VPN, endpoint security, and monitoring solutions."
+  },
+  {
+    "name": "Blockchain Security",
+    "framework": "NIST",
+    "description": "Ensure blockchain implementations follow secure cryptographic and consensus mechanisms."
+  },
+  {
+    "name": "Container Security",
+    "framework": "CIS",
+    "description": "Secure containerized environments with runtime security monitoring, image scanning, and least privilege policies."
+  },
+  {
+    "name": "Mobile Device Security",
+    "framework": "NIST",
+    "description": "Enforce security policies on mobile devices, including encryption, remote wipe, and application whitelisting."
+  },
+  {
+    "name": "Penetration Testing",
+    "framework": "ISO 27002",
+    "description": "Regularly conduct penetration testing to identify security weaknesses and improve defenses."
+  },
+  {
+    "name": "Ransomware Protection",
+    "framework": "NIST",
+    "description": "Implement ransomware defenses, including immutable backups and endpoint detection response."
+  },
+  {
+    "name": "Privacy Impact Assessment",
+    "framework": "GDPR",
+    "description": "Conduct privacy impact assessments to evaluate risks to personal data and ensure compliance."
+  },
+  {
+    "name": "DNS Security",
+    "framework": "CIS",
+    "description": "Deploy DNS security measures such as DNS filtering and DNSSEC to prevent attacks."
+  },
+  {
+    "name": "Secure Cloud Storage",
+    "framework": "ISO 27017",
+    "description": "Ensure data stored in the cloud is encrypted and access is tightly controlled."
+  },
+  {
+    "name": "AI Bias Mitigation",
+    "framework": "ISO 42001",
+    "description": "Ensure AI models are tested for bias and comply with ethical AI principles."
+  },
+  {
+    "name": "Web Application Security",
+    "framework": "OWASP",
+    "description": "Protect web applications against common vulnerabilities such as SQL injection and XSS."
+  },
+  {
+    "name": "Security Awareness Campaigns",
+    "framework": "NIST",
+    "description": "Conduct ongoing security awareness training to build a security-conscious culture."
+  },
+  {
+    "name": "Log Management",
+    "framework": "SOC 2",
+    "description": "Ensure all security logs are collected, stored, and analyzed for potential threats."
+  },
+  {
+    "name": "DevSecOps",
+    "framework": "ISO 27001",
+    "description": "Integrate security into the software development lifecycle using DevSecOps principles."
+  },
+  {
+    "name": "Compliance Audits",
+    "framework": "PCI DSS",
+    "description": "Regularly conduct security compliance audits to maintain regulatory adherence."
+  },
+  {
+    "name": "Secure File Transfers",
+    "framework": "ISO 27001",
+    "description": "Use secure protocols like SFTP or TLS to transfer sensitive data securely."
+  },
+  {
+    "name": "Security Risk Management",
+    "framework": "NIST",
+    "description": "Regularly assess, prioritize, and mitigate security risks across the organization."
+  },
+  {
+    "name": "Data Classification",
+    "framework": "ISO 27002",
+    "description": "Implement data classification policies to ensure sensitive data is appropriately protected."
+  },
+  {
+    "name": "Third-Party Risk Management",
+    "framework": "SOC 2",
+    "description": "Continuously evaluate and monitor security risks associated with third-party vendors."
+  },
+  {
+    "name": "Risk Assessment",
+    "framework": "ISO 31000",
+    "description": "Conduct regular risk assessments to identify, analyze, and mitigate security risks."
+  },
+  {
+    "name": "Security Governance",
+    "framework": "NIST",
+    "description": "Establish a governance framework for managing cybersecurity policies and compliance."
+  },
+  {
+    "name": "Automated Threat Detection",
+    "framework": "MITRE ATT&CK",
+    "description": "Implement automated systems to detect and respond to cyber threats in real-time."
+  },
+  {
+    "name": "Secure Remote Access",
+    "framework": "CIS",
+    "description": "Ensure secure remote access through VPN, zero-trust networks, and endpoint security."
+  },
+  {
+    "name": "Mobile Application Security",
+    "framework": "OWASP",
+    "description": "Apply secure coding practices and encryption in mobile app development to mitigate risks."
+  },
+  {
+    "name": "Cloud Access Security Broker (CASB)",
+    "framework": "CSA CCM",
+    "description": "Deploy CASB solutions to monitor and enforce security policies in cloud applications."
+  },
+  {
+    "name": "User Identity Verification",
+    "framework": "ISO 27001",
+    "description": "Implement strong identity verification mechanisms such as biometrics and identity proofing."
+  },
+  {
+    "name": "Secure Key Management",
+    "framework": "NIST",
+    "description": "Establish cryptographic key management policies to ensure secure encryption and decryption processes."
+  },
+  {
+    "name": "Container Runtime Security",
+    "framework": "CIS",
+    "description": "Monitor and control container runtime behavior to prevent unauthorized access and execution."
+  },
+  {
+    "name": "Behavioral Analytics",
+    "framework": "SOC 2",
+    "description": "Utilize behavioral analytics to detect anomalous activity that may indicate insider threats."
+  },
+  {
+    "name": "Dark Web Monitoring",
+    "framework": "MITRE ATT&CK",
+    "description": "Monitor dark web sources for leaked credentials, company data, and emerging threats."
+  },
+  {
+    "name": "Rogue Device Detection",
+    "framework": "NIST",
+    "description": "Deploy network monitoring tools to identify and mitigate rogue or unauthorized devices."
+  },
+  {
+    "name": "Security Patch Validation",
+    "framework": "CIS",
+    "description": "Test security patches in a controlled environment before deploying them to production systems."
+  },
+  {
+    "name": "Application Whitelisting",
+    "framework": "NIST",
+    "description": "Implement application whitelisting to allow only authorized software to run on critical systems."
+  },
+  {
+    "name": "DNS Filtering",
+    "framework": "CIS",
+    "description": "Use DNS filtering to block access to known malicious domains and prevent phishing attacks."
+  },
+  {
+    "name": "Physical Access Control",
+    "framework": "ISO 27002",
+    "description": "Implement badge systems, biometric authentication, and security guards to control physical access."
+  },
+  {
+    "name": "Machine Learning-Based Threat Detection",
+    "framework": "ISO 42001",
+    "description": "Leverage AI and machine learning models to detect and predict cyber threats."
+  },
+  {
+    "name": "File Integrity Monitoring",
+    "framework": "PCI DSS",
+    "description": "Deploy file integrity monitoring solutions to detect unauthorized modifications to critical files."
+  },
+  {
+    "name": "Automated Compliance Reporting",
+    "framework": "SOC 2",
+    "description": "Automate compliance reporting to track adherence to security policies and regulations."
+  },
+  {
+    "name": "Credential Management",
+    "framework": "ISO 27001",
+    "description": "Use secure credential storage, rotation policies, and secret management tools to protect credentials."
+  },
+  {
+    "name": "Egress Traffic Monitoring",
+    "framework": "NIST",
+    "description": "Monitor outbound network traffic to detect potential data exfiltration attempts."
+  },
+  {
+    "name": "DevOps Security Automation",
+    "framework": "CIS",
+    "description": "Integrate security controls into CI/CD pipelines to enforce secure development practices."
+  },
+  {
+    "name": "USB Device Control",
+    "framework": "NIST",
+    "description": "Restrict USB device usage to prevent unauthorized data transfers and malware infections."
+  },
+  {
+    "name": "Geofencing Security Controls",
+    "framework": "ISO 27001",
+    "description": "Implement geofencing to restrict access based on geographical locations."
+  },
+  {
+    "name": "Blockchain Smart Contract Security",
+    "framework": "NIST",
+    "description": "Conduct security audits of smart contracts to identify vulnerabilities and prevent exploits."
+  },
+  {
+    "name": "SIEM Integration",
+    "framework": "CIS",
+    "description": "Integrate all security logs into a centralized Security Information and Event Management (SIEM) system."
+  },
+  {
+    "name": "Secure IoT Authentication",
+    "framework": "NIST",
+    "description": "Ensure strong authentication mechanisms for IoT devices to prevent unauthorized access."
+  },
+  {
+    "name": "Privacy-Preserving Data Analytics",
+    "framework": "GDPR",
+    "description": "Use privacy-preserving techniques such as differential privacy to protect sensitive user data."
+  },
+  {
+    "name": "Advanced Persistent Threat (APT) Detection",
+    "framework": "MITRE ATT&CK",
+    "description": "Deploy threat-hunting methodologies to detect and mitigate persistent cyber threats."
+  },
+  {
+    "name": "Cloud Workload Security",
+    "framework": "CSA CCM",
+    "description": "Protect cloud workloads using runtime protection, identity security, and continuous monitoring."
+  },
+  {
+    "name": "Automated Data Masking",
+    "framework": "ISO 27001",
+    "description": "Implement automated data masking techniques to protect personally identifiable information (PII)."
+  },
+  {
+    "name": "Threat Hunting Program",
+    "framework": "MITRE ATT&CK",
+    "description": "Proactively search for security threats before they can cause harm to the organization."
+  },
+  {
+    "name": "Hardware Security Modules (HSM)",
+    "framework": "NIST",
+    "description": "Use HSMs to securely generate, store, and manage cryptographic keys."
+  },
+  {
+    "name": "Cybersecurity Drills",
+    "framework": "ISO 22301",
+    "description": "Conduct regular cybersecurity drills and tabletop exercises to prepare for security incidents."
+  },
+  {
+    "name": "Session Management Security",
+    "framework": "OWASP",
+    "description": "Implement secure session management to prevent session hijacking and replay attacks."
+  },
+  {
+    "name": "Cyber Threat Intelligence Sharing",
+    "framework": "MITRE ATT&CK",
+    "description": "Participate in cyber threat intelligence sharing to stay updated on emerging threats."
+  },
+  {
+    "name": "AI-Powered Fraud Detection",
+    "framework": "ISO 42001",
+    "description": "Use AI-driven analytics to detect fraudulent transactions and prevent financial losses."
+  },
+  {
+    "name": "Federated Identity Management",
+    "framework": "ISO 27001",
+    "description": "Implement federated identity solutions to enable secure cross-organization authentication."
+  },
+  {
+    "name": "Ransomware Readiness Assessment",
+    "framework": "NIST",
+    "description": "Conduct assessments to evaluate the organization's resilience against ransomware attacks."
+  },
+  {
+    "name": "Secure Collaboration Tools",
+    "framework": "ISO 27001",
+    "description": "Ensure security measures are in place for collaboration tools such as email, chat, and file sharing."
+  },
+  {
+    "name": "Data Tokenization",
+    "framework": "PCI DSS",
+    "description": "Use tokenization to replace sensitive data with unique identifiers, reducing exposure to breaches."
+  },
+  {
+    "name": "Zero-Day Exploit Protection",
+    "framework": "MITRE ATT&CK",
+    "description": "Implement proactive security measures to mitigate risks from zero-day vulnerabilities."
+  },
+  {
+    "name": "Digital Forensics Readiness",
+    "framework": "ISO 27035",
+    "description": "Establish a digital forensics plan to collect and analyze evidence in case of a security breach."
+  },
+  {
+    "name": "Malware Sandbox Analysis",
+    "framework": "CIS",
+    "description": "Use sandbox environments to analyze and mitigate new malware strains before they spread."
+  }
+]

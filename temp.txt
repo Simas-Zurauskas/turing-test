@@ -1,0 +1,128 @@
+<<Description>>
+
+In this project, you will build a Data Cleaning Agent. This agent will process CSV or Excel files, detect common issues like missing values or outliers, and provide users with a clean dataset ready for analysis.
+
+Topics:
+
+Data Cleaning
+Streamlit or Next.js
+LangChain / LangGraph (optional)
+OpenAI API
+Prompt Engineering
+Prerequisites:
+
+Python or TypeScript knowledge
+Knowledge of ChatGPT
+Knowledge of OpenAI API
+Basic knowledge of Streamlit or Next.js
+Knowledge of agents
+Estimated time to complete: 8 hours
+
+
+Task Description
+alt_text
+Preview
+
+You will now build a Data Cleaning Agent that automates the process of cleaning datasets, saving analysts valuable time. This agent will allow users to upload a dataset, process it through automated cleaning routines, and download the clean version.
+
+Python
+JavaScript
+We recommend using Next.js, and in particular the Next.js LangChain starter template. It includes an example of how to use agents in a Next.js project. Pick an npm package to parse the CSVs as there are some gotchas with just trying to split rows by commas. Also, you might want to consider ability to process the data in chunks if you are taking up the optional task of handling large files. Then, data can be cleaned entirely with plain JavaScript and some prompt engineering. You can add additional packages if they are necessary for the task.
+
+The intended code editor for this project is VS Code.
+
+If you feel confident, feel free to over-engineer the app by adding different things from the optional tasks and coming up with your own things. You can try making it as a portfolio project!
+
+Remember, you have all the tools at your disposal: ChatGPT, StackOverflow, or a friend!
+
+Task Requirements
+The exact task requirements are as follows:
+
+File Upload and Display:
+Allow users to upload CSV or Excel files.
+Display the uploaded dataset in a table view.
+Automated Data Cleaning:
+Detect missing values and provide options to handle them (e.g., impute, drop).
+Identify and flag outliers using statistical methods.
+Remove duplicate rows.
+Generate a report summarizing the issues found and actions taken.
+Downloadable Output:
+Provide users with the ability to download the cleaned dataset as a CSV or Excel file.
+UI:
+Build a simple, intuitive interface for all functionalities.
+Security and Validation:
+Add safeguards to validate uploaded files and prevent misuse of the app.
+Optional Tasks
+After the main functionality is implemented and your code works correctly, and you feel that you want to upgrade your project, choose one or more improvements from this list. The list is sorted by difficulty levels.
+
+Caution: Some of the tasks in medium or hard categories may contain tasks with concepts or libraries that may be introduced in later sections or even require outside knowledge/time to research outside of the course.
+
+Easy:
+
+Ask ChatGPT to critique your solution from the usability, security, and prompt-engineering sides.
+Improving the data cleaning agent to be more specialized for your specific domain: IT, HR, marketing, finance, etc.
+Add options for advanced cleaning:
+Handle column name standardization.
+Perform data type corrections (e.g., convert strings to dates or numbers).
+Remove columns with low variance.
+Generate a summary report that explains what cleaning actions were performed.
+Improve error handling in your agent to provide clearer messages when issues arise.
+Give the agent a personality–tweak responses to make them more formal, friendly, or concise based on user needs.
+Medium:
+
+Adding all of the OpenAI settings (models, temperature, frequency, etc.) for the user to tune as sliders/fields.
+Deploying your app to the Internet.
+Calculating and providing output to the user on the price of the prompt.
+Read OpenAI API documentation, think of your own improvement, and implement it.
+Try to jailbreak (break into) your own application.
+Provide data visualizations (line, bar, pie charts, etc.) summarizing missing values and outlier distributions.
+Provide the user with the ability to choose from a list of LLMs (Gemini, OpenAI, etc.) for this project.
+Think of a creative way; how could you use image generation inside this project and implement it using code?
+Enable simple rule-based filtering, such as removing rows with missing critical values.
+Add retry logic – if the agent fails or returns an incomplete response, it automatically tries again with adjustments.
+Hard:
+
+Make your solution scalable, meaning that you can clean large CSV files: 100MB or even in the GB range.
+Deploy your app to one of these cloud providers: Gemini, AWS, or Azure.
+Implement a tool that allows agents to call an external API.
+Think of ways how to add vector databases to the project (saving, comparing and calculating vectors) and implement it.
+Use open-source LLMs (not Gemini, OpenAI, etc.) for the project.
+Make your program multi-agent. Some inspiration: one agent would assess how clean the dataset is, another could provide possible cleaning options, and the third could perform the actual cleaning.
+Fine-tine an LLM and use it in your project.
+Enable user management. Add login functionality and register functionality.
+Benchmark different LLMs (or even open-source ones) to see which LLM performs better for this project. Save the results. Present the results for the evaluator.
+Evaluation Criteria
+The learner understands the basic principles of how the program works.
+The learner’s project works as intended; the agent successfully cleans the dataset to a sufficient degree.
+The learner understands the potential problems with the application. He can offer suggestions on improving the code and the project.
+The learner understands differences between different types of agents.
+The learner understands when to use RAG, prompt engineering, Chains or Agents.
+The program has at least one agent and that agent uses tools for the data cleanup.
+For the maximum mark, complete at least 2 medium and hard optional tasks.
+
+
+<<Target project>>
+Intelligent Data Cleaning with Customizable Cleaning Profiles
+Description:
+A system where users can define different cleaning profiles (Finance, Healthcare, Marketing, etc.), and agents collaborate to tailor cleaning rules based on the dataset's domain.
+
+Agents:
+
+Profile Selector Agent
+
+Analyzes the dataset and recommends a cleaning profile.
+Allows users to manually select a predefined cleaning profile.
+Cleaning Execution Agent
+
+Performs the actual cleaning tasks based on the selected profile.
+Standardizes data formats (dates, numbers, currency, categorical values).
+Removes inconsistencies and outliers based on domain-specific rules.
+Validation & Summary Agent
+
+Checks if the cleaned dataset conforms to industry-specific best practices.
+Provides a summary report with issues fixed, remaining concerns, and suggestions.
+Optional Upgrades:
+
+Integrate LLMs to detect contextual errors in textual fields.
+Allow users to tweak AI models (OpenAI vs. Open-Source LLMs).
+Provide real-time cost estimation of API usage.
