@@ -7,53 +7,9 @@ import {
   CleaningResult,
   CleaningIssue,
 } from '../../../../../types/dataCleaningTypes';
-import { Annotation, StateGraph } from '@langchain/langgraph';
+import { Annotation } from '@langchain/langgraph';
 
-// Re-export the cleaning types
 export type { DatasetType, DataRow, CleaningProfile, CleaningOptions, CleaningResult, CleaningIssue };
-
-// We'll create an interface for our state
-// export interface CleaningState {
-//   dataset: DatasetType;
-//   profile: CleaningProfile;
-//   options: CleaningOptions;
-//   cleanedData: DataRow[];
-//   missingValuesFixed: {
-//     count: number;
-//     columns: Map<string, number>;
-//   };
-//   outliersDetected: {
-//     count: number;
-//     columns: Map<string, number>;
-//   };
-//   duplicatesRemoved: { count: number };
-//   llmCleaningStats: {
-//     fieldsProcessed: number;
-//     contextualIssuesFixed: number;
-//     insights: string[];
-//     contextualIssues: Map<string, { count: number; examples: string[] }>;
-//   };
-//   columnsStandardized: number;
-//   issues: CleaningIssue[];
-//   result?: CleaningResult;
-// }
-
-// export const StateAnnotation = Annotation.Root({
-//     messages: Annotation<BaseMessage[], BaseMessageLike[]>({
-//       reducer: messagesStateReducer,
-//       default: () => [],
-//     }),
-//     userInput: Annotation<string>({
-//       reducer: (_, value) => value,
-//       default: () => '',
-//     }),
-//     summary: Annotation<string>({
-//       reducer: (_, value) => value,
-//       default: () => '',
-//     }),
-//   });
-
-//   type State = typeof StateAnnotation.State;
 
 // Define the CleaningStateAnnotation
 export const CleaningStateAnnotation = Annotation.Root({
