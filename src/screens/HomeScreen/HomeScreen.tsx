@@ -41,7 +41,7 @@ const Description = styled.p`
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   gap: 2rem;
   margin-bottom: 2rem;
 `;
@@ -72,11 +72,6 @@ const UploadSummaryContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 2rem;
-  margin-bottom: 2rem;
-
-  @media (max-width: 1200px) {
-    grid-template-columns: 1fr;
-  }
 `;
 
 const Button = styled.button<{ primary?: boolean }>`
@@ -200,8 +195,8 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
 
       {/* Full width upload and summary section */}
       <FullWidthCard>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-          <CardTitle>Upload Dataset & Results</CardTitle>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <CardTitle>Upload Dataset</CardTitle>
           {activeStep > 1 && dataset && (
             <span style={{ color: 'green', fontSize: '0.9rem' }}>
               ✓ {dataset.filename} ({dataset.data.length} rows)
@@ -209,64 +204,27 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
           )}
         </div>
 
-        <UploadSummaryContainer>
-          <div>
-            {activeStep === 1 ? (
-              <FileUploader onFileUploaded={handleFileUpload} />
-            ) : (
-              <div>
-                <button
-                  onClick={resetProcess}
-                  disabled={isProcessing}
-                  style={{
-                    padding: '0.5rem 1rem',
-                    backgroundColor: '#f8f9fa',
-                    border: '1px solid #dee2e6',
-                    borderRadius: '4px',
-                    marginBottom: '1rem',
-                    cursor: 'pointer',
-                  }}
-                >
-                  Upload different file
-                </button>
-                {cleaningResult && (
-                  <div style={{ marginTop: '2rem' }}>
-                    <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>Download Options</h3>
-                    <CleaningResults result={cleaningResult} originalDataset={dataset!} />
-                  </div>
-                )}
-              </div>
-            )}
-
-            {/* Start/Re-run Cleaning Button */}
-            {activeStep >= 3 && selectedProfile && (
-              <Button
-                primary
-                onClick={startCleaning}
-                disabled={isProcessing}
-                style={{ marginTop: '2rem', width: '100%' }}
-              >
-                {isProcessing ? (
-                  <SpinnerContainer>
-                    <Spinner />
-                    <span>Processing...</span>
-                  </SpinnerContainer>
-                ) : cleaningResult ? (
-                  'Re-run Cleaning'
-                ) : (
-                  'Start Cleaning'
-                )}
-              </Button>
-            )}
-          </div>
-
-          {cleaningResult && (
+        <div>
+          {activeStep === 1 ? (
+            <FileUploader onFileUploaded={handleFileUpload} />
+          ) : (
             <div>
-              <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>Cleaning Summary</h3>
-              <DataSummary summary={cleaningResult.summary} issues={cleaningResult.issues} />
+              <button
+                onClick={resetProcess}
+                disabled={isProcessing}
+                style={{
+                  padding: '0.5rem 1rem',
+                  backgroundColor: '#f8f9fa',
+                  border: '1px solid #dee2e6',
+                  borderRadius: '4px',
+                  cursor: 'pointer',
+                }}
+              >
+                Upload different file
+              </button>
             </div>
           )}
-        </UploadSummaryContainer>
+        </div>
       </FullWidthCard>
 
       <Grid>
@@ -301,6 +259,49 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
           </Card>
         )}
       </Grid>
+
+      {/* New card for Start Cleaning and Results */}
+      {dataset && selectedProfile && (
+        <FullWidthCard>
+          <CardTitle>3. Start Cleaning & Results</CardTitle>
+          <UploadSummaryContainer>
+            <div>
+              {/* Start/Re-run Cleaning Button */}
+              <Button
+                primary
+                onClick={startCleaning}
+                disabled={isProcessing}
+                style={{ marginTop: '1rem', width: '100%' }}
+              >
+                {isProcessing ? (
+                  <SpinnerContainer>
+                    <Spinner />
+                    <span>Processing...</span>
+                  </SpinnerContainer>
+                ) : cleaningResult ? (
+                  'Re-run Cleaning'
+                ) : (
+                  'Start Cleaning'
+                )}
+              </Button>
+
+              {cleaningResult && (
+                <div style={{ marginTop: '2rem' }}>
+                  <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>Download Options</h3>
+                  <CleaningResults result={cleaningResult} originalDataset={dataset!} />
+                </div>
+              )}
+            </div>
+
+            {cleaningResult && (
+              <div>
+                <h3 style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>Cleaning Summary</h3>
+                <DataSummary summary={cleaningResult.summary} issues={cleaningResult.issues} />
+              </div>
+            )}
+          </UploadSummaryContainer>
+        </FullWidthCard>
+      )}
 
       {dataset && (
         <FullWidthCard>

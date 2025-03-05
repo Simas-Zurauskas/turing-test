@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { DatasetType, CleaningProfile, DatasetAnalysisResult } from '../../types/dataCleaningTypes';
 import { analyzeDataset } from '../../services/dataCleaningService';
+import { Tooltip } from './Tooltip';
 
 const ProfilesContainer = styled.div`
   display: grid;
@@ -178,8 +179,12 @@ const ScoreValue = styled.div<{ score: number }>`
 `;
 
 const ScoreLabel = styled.div`
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   color: #6c757d;
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const UseCase = styled.div`
@@ -384,25 +389,41 @@ export const CleaningProfileSelector: React.FC<CleaningProfileSelectorProps> = (
                 <ScoreValue score={analysisResult.dataQualityAssessment.completenessScore}>
                   {analysisResult.dataQualityAssessment.completenessScore.toFixed(1)}
                 </ScoreValue>
-                <ScoreLabel>Completeness</ScoreLabel>
+                <ScoreLabel>
+                  <Tooltip text="Measures the extent to which the dataset contains all necessary values without missing data. Higher scores indicate fewer missing values.">
+                    Completeness
+                  </Tooltip>
+                </ScoreLabel>
               </QualityScore>
               <QualityScore>
                 <ScoreValue score={analysisResult.dataQualityAssessment.accuracyScore}>
                   {analysisResult.dataQualityAssessment.accuracyScore.toFixed(1)}
                 </ScoreValue>
-                <ScoreLabel>Accuracy</ScoreLabel>
+                <ScoreLabel>
+                  <Tooltip text="Evaluates how correctly the data represents the real-world values it aims to model. Higher scores indicate fewer errors and outliers.">
+                    Accuracy
+                  </Tooltip>
+                </ScoreLabel>
               </QualityScore>
               <QualityScore>
                 <ScoreValue score={analysisResult.dataQualityAssessment.consistencyScore}>
                   {analysisResult.dataQualityAssessment.consistencyScore.toFixed(1)}
                 </ScoreValue>
-                <ScoreLabel>Consistency</ScoreLabel>
+                <ScoreLabel>
+                  <Tooltip text="Measures the uniformity of data formats and values across the dataset. Higher scores indicate more consistent data representations.">
+                    Consistency
+                  </Tooltip>
+                </ScoreLabel>
               </QualityScore>
               <QualityScore>
                 <ScoreValue score={analysisResult.dataQualityAssessment.overallQualityScore}>
                   {analysisResult.dataQualityAssessment.overallQualityScore.toFixed(1)}
                 </ScoreValue>
-                <ScoreLabel>Overall Quality</ScoreLabel>
+                <ScoreLabel>
+                  <Tooltip text="A combined measure that evaluates the dataset's overall quality considering all quality dimensions. Higher scores indicate better overall data quality.">
+                    Overall Quality
+                  </Tooltip>
+                </ScoreLabel>
               </QualityScore>
             </QualityScoreGrid>
           </AnalysisSection>
@@ -435,19 +456,35 @@ export const CleaningProfileSelector: React.FC<CleaningProfileSelectorProps> = (
               <SectionTitle>Metrics</SectionTitle>
               <div style={{ marginLeft: '0.5rem', fontSize: '0.875rem', color: '#6c757d' }}>
                 <div>
-                  <AnalysisLabel>Missing Value Ratio:</AnalysisLabel>{' '}
+                  <AnalysisLabel>
+                    <Tooltip text="The percentage of missing values in the dataset. Lower percentages indicate more complete data.">
+                      Missing Value Ratio:
+                    </Tooltip>
+                  </AnalysisLabel>{' '}
                   <AnalysisValue>{(analysisResult.analysisMetrics.missingValueRatio * 100).toFixed(2)}%</AnalysisValue>
                 </div>
                 <div>
-                  <AnalysisLabel>Duplicate Rows:</AnalysisLabel>{' '}
+                  <AnalysisLabel>
+                    <Tooltip text="The estimated number of duplicate rows in the dataset. Lower numbers indicate less redundancy.">
+                      Duplicate Rows:
+                    </Tooltip>
+                  </AnalysisLabel>{' '}
                   <AnalysisValue>{analysisResult.analysisMetrics.duplicateRowsEstimate}</AnalysisValue>
                 </div>
                 <div>
-                  <AnalysisLabel>Anomaly Score:</AnalysisLabel>{' '}
+                  <AnalysisLabel>
+                    <Tooltip text="A measure of how many unusual or potentially erroneous values exist in the dataset. Lower scores indicate fewer anomalies.">
+                      Anomaly Score:
+                    </Tooltip>
+                  </AnalysisLabel>{' '}
                   <AnalysisValue>{analysisResult.analysisMetrics.anomalyScore.toFixed(2)} / 10</AnalysisValue>
                 </div>
                 <div>
-                  <AnalysisLabel>Format Consistency:</AnalysisLabel>{' '}
+                  <AnalysisLabel>
+                    <Tooltip text="How consistently data formats are applied across columns. Higher scores indicate more standardized formatting.">
+                      Format Consistency:
+                    </Tooltip>
+                  </AnalysisLabel>{' '}
                   <AnalysisValue>{analysisResult.analysisMetrics.formatConsistencyScore.toFixed(2)} / 10</AnalysisValue>
                 </div>
               </div>
