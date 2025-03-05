@@ -131,6 +131,11 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
     removeDuplicates: true,
     standardizeColumns: true,
     replacementValue: 'N/A',
+    // LLM options - always enabled
+    useLLM: true, // Always true
+    llmContextualCleaning: true,
+    llmDetectAnomalies: true,
+    llmTemperature: 0.2,
   });
   const [cleaningResult, setCleaningResult] = useState<CleaningResult | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);

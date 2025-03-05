@@ -82,6 +82,11 @@ interface CleaningOptionsProps {
     handleOutliers: string;
     removeDuplicates: boolean;
     standardizeColumns: boolean;
+    useLLM?: boolean;
+    llmProvider?: string;
+    llmContextualCleaning?: boolean;
+    llmDetectAnomalies?: boolean;
+    llmTemperature?: number;
   };
   onChange: (options: any) => void;
   isProcessing: boolean;
@@ -243,6 +248,71 @@ export const CleaningOptions: React.FC<CleaningOptionsProps> = ({
         onChange={(checked) => onChange({ standardizeColumns: checked })}
         disabled={disabled || isProcessing}
       />
+
+      {/* AI-Powered Cleaning Options - No toggle for enable/disable since it's mandatory */}
+      <OptionGroup>
+        <OptionLabel>
+          AI-Powered Cleaning Options (OpenAI)
+          <span
+            style={{
+              marginLeft: '5px',
+              fontSize: '0.75rem',
+              backgroundColor: '#e6f7ff',
+              color: '#0077cc',
+              padding: '2px 6px',
+              borderRadius: '4px',
+            }}
+          >
+            Enabled
+          </span>
+        </OptionLabel>
+        <OptionDescription>
+          Advanced AI cleaning with OpenAI is automatically applied to textual data, detecting and fixing contextual
+          errors, inconsistent formatting, and domain-specific issues.
+        </OptionDescription>
+      </OptionGroup>
+
+      <CheckboxOption
+        id="llmContextualCleaning"
+        label="Contextual error detection"
+        description="Detect and fix errors based on the content and context of text fields."
+        checked={options.llmContextualCleaning ?? true}
+        onChange={(checked) => onChange({ llmContextualCleaning: checked })}
+        disabled={disabled || isProcessing}
+      />
+
+      <CheckboxOption
+        id="llmDetectAnomalies"
+        label="Domain-specific anomaly detection"
+        description="Identify values that are unusual for the dataset's domain (e.g., uncommon medical terms in healthcare data)."
+        checked={options.llmDetectAnomalies ?? false}
+        onChange={(checked) => onChange({ llmDetectAnomalies: checked })}
+        disabled={disabled || isProcessing}
+      />
+
+      <OptionGroup>
+        <OptionLabel htmlFor="llmTemperature">AI Creativity (Temperature)</OptionLabel>
+        <Input
+          id="llmTemperature"
+          type="range"
+          min="0"
+          max="1"
+          step="0.1"
+          value={options.llmTemperature !== undefined ? options.llmTemperature : 0.2}
+          onChange={(e) => onChange({ llmTemperature: parseFloat(e.target.value) })}
+          disabled={disabled || isProcessing}
+        />
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <span style={{ fontSize: '0.8rem' }}>Conservative</span>
+          <span style={{ fontSize: '0.8rem' }}>
+            {options.llmTemperature !== undefined ? options.llmTemperature.toFixed(1) : '0.2'}
+          </span>
+          <span style={{ fontSize: '0.8rem' }}>Creative</span>
+        </div>
+        <OptionDescription>
+          Lower values make the AI more conservative in its corrections, while higher values increase creativity.
+        </OptionDescription>
+      </OptionGroup>
     </OptionsContainer>
   );
 };

@@ -33,16 +33,21 @@ export interface CleaningSummary {
 }
 
 export interface CleaningIssue {
-  type: 'missing' | 'outlier' | 'duplicate' | 'format' | 'custom';
+  type: 'missing' | 'outlier' | 'duplicate' | 'format' | 'custom' | 'contextual';
   column: string;
   count: number;
   action: string;
+  examples?: string[]; // Examples of issues found (for contextual issues)
 }
 
 export interface CleaningResult {
   cleanedData: DataRow[];
-  summary: CleaningSummary;
+  summary: CleaningSummary & {
+    llmCleaningApplied?: number; // Number of fields cleaned by LLM
+    contextualIssuesFixed?: number; // Number of contextual issues fixed
+  };
   issues: CleaningIssue[];
+  llmInsights?: string[]; // Additional insights provided by the LLM
 }
 
 export interface CleaningOptions {
@@ -51,6 +56,11 @@ export interface CleaningOptions {
   removeDuplicates: boolean;
   standardizeColumns: boolean;
   replacementValue?: string; // Value to use when handleMissingValues is 'replace'
+  useLLM: boolean; // Always true, but kept for backward compatibility
+  llmContextualCleaning: boolean; // Whether to use contextual cleaning for text fields
+  llmDetectAnomalies: boolean; // Whether to use LLM to detect anomalies in data
+  llmTemperature: number; // Control LLM creativity (0.0-1.0)
+  llmMaxTokens?: number; // Maximum tokens for LLM response
 }
 
 export interface DatasetAnalysisResult {

@@ -51,6 +51,34 @@ const TableCell = styled.td`
   border-top: 1px solid #dee2e6;
 `;
 
+const InsightsContainer = styled.div`
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  border-left: 4px solid #007bff;
+`;
+
+const InsightsList = styled.ul`
+  margin-top: 0.5rem;
+  padding-left: 1.5rem;
+`;
+
+const InsightItem = styled.li`
+  margin-bottom: 0.5rem;
+`;
+
+const ExampleList = styled.ul`
+  margin-top: 0.5rem;
+  padding-left: 1.5rem;
+  font-size: 0.875rem;
+  color: #666;
+`;
+
+const ExampleItem = styled.li`
+  margin-bottom: 0.25rem;
+`;
+
 interface CleaningResultsProps {
   result: CleaningResult;
   originalDataset: DatasetType;
@@ -134,6 +162,12 @@ export const CleaningResults: React.FC<CleaningResultsProps> = ({ result, origin
 
   const stats = getComparisonStats();
 
+  // Check if LLM cleaning was performed
+  const llmCleaningApplied = result.summary.llmCleaningApplied && result.summary.llmCleaningApplied > 0;
+
+  // Get contextual issues
+  const contextualIssues = result.issues.filter((issue) => issue.type === 'contextual');
+
   return (
     <ResultsContainer>
       <p>Your data has been cleaned successfully! Download the cleaned dataset to use in your analysis.</p>
@@ -147,7 +181,7 @@ export const CleaningResults: React.FC<CleaningResultsProps> = ({ result, origin
           Download CSV
         </Button>
 
-        <Button onClick={() => handleDownload('json')}>
+        <Button primary onClick={() => handleDownload('json')}>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
             <path d="M8 12l-4-4h2.5V4h3v4H12L8 12z" />
             <path d="M14 13v1H2v-1h12z" />
@@ -155,6 +189,46 @@ export const CleaningResults: React.FC<CleaningResultsProps> = ({ result, origin
           Download JSON
         </Button>
       </DownloadSection>
+
+      {/* LLM Insights Section */}
+      {llmCleaningApplied && result.llmInsights && result.llmInsights.length > 0 && (
+        <InsightsContainer>
+          <h4>AI-Generated Insights</h4>
+          <p>The AI model identified and fixed contextual issues in your text data:</p>
+          <InsightsList>
+            {result.llmInsights.map((insight, index) => (
+              <InsightItem key={index}>{insight}</InsightItem>
+            ))}
+          </InsightsList>
+        </InsightsContainer>
+      )}
+
+      {/* Contextual Issues */}
+      {contextualIssues.length > 0 && (
+        <div>
+          <h4>Contextual Issues Fixed</h4>
+          <p>
+            The AI model identified and fixed {result.summary.contextualIssuesFixed} contextual issues across{' '}
+            {contextualIssues.length} columns.
+          </p>
+
+          {contextualIssues.map((issue, index) => (
+            <div key={index} style={{ marginBottom: '1rem' }}>
+              <strong>Column: {issue.column}</strong> - {issue.count} issues fixed
+              {issue.examples && issue.examples.length > 0 && (
+                <>
+                  <p>Examples of fixes:</p>
+                  <ExampleList>
+                    {issue.examples.map((example, exIndex) => (
+                      <ExampleItem key={exIndex}>{example}</ExampleItem>
+                    ))}
+                  </ExampleList>
+                </>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
 
       <div>
         <h4>Before vs After Comparison</h4>
@@ -194,6 +268,16 @@ export const CleaningResults: React.FC<CleaningResultsProps> = ({ result, origin
                 {result.summary.duplicatesRemoved > 0 ? `-${result.summary.duplicatesRemoved}` : '0'}
               </TableCell>
             </tr>
+            {llmCleaningApplied && (
+              <tr>
+                <TableCell>AI-Fixed Contextual Issues</TableCell>
+                <TableCell>{result.summary.contextualIssuesFixed || 0}</TableCell>
+                <TableCell>0</TableCell>
+                <TableCell>
+                  {result.summary.contextualIssuesFixed ? `-${result.summary.contextualIssuesFixed}` : '0'}
+                </TableCell>
+              </tr>
+            )}
           </tbody>
         </ComparisionTable>
       </div>
