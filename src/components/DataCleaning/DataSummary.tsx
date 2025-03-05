@@ -148,10 +148,6 @@ export const DataSummary: React.FC<DataSummaryProps> = ({ summary, issues }) => 
             <StatValue>{summary.duplicatesRemoved}</StatValue>
             <StatLabel>Duplicates Removed</StatLabel>
           </StatItem>
-          <StatItem>
-            <StatValue>{summary.columnsStandardized}</StatValue>
-            <StatLabel>Columns Standardized</StatLabel>
-          </StatItem>
         </StatGrid>
       </SummaryCard>
 

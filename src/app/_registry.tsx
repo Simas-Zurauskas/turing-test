@@ -7,8 +7,6 @@ import { useState } from 'react';
 import { ThemeProvider as MUIThemeProvider } from '@mui/material';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Provider as StateProvider } from 'react-redux';
-import { store } from '@/state';
 
 interface RegistryProps {
   children?: React.ReactNode;
@@ -17,15 +15,13 @@ interface RegistryProps {
 const Registry: React.FC<RegistryProps> = ({ children }) => {
   const [queryClient] = useState(() => new QueryClient());
   return (
-    <StateProvider store={store}>
-      <MUIThemeProvider theme={theme}>
-        <EmotionThemeProvider theme={{ ...theme, colors }}>
-          <ToastContainer hideProgressBar autoClose={4000} theme="colored" pauseOnHover position="top-center" />
-          <CssBaseline />
-          <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-        </EmotionThemeProvider>
-      </MUIThemeProvider>
-    </StateProvider>
+    <MUIThemeProvider theme={theme}>
+      <EmotionThemeProvider theme={{ ...theme, colors }}>
+        <ToastContainer hideProgressBar autoClose={4000} theme="colored" pauseOnHover position="top-center" />
+        <CssBaseline />
+        <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      </EmotionThemeProvider>
+    </MUIThemeProvider>
   );
 };
 

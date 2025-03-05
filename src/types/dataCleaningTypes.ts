@@ -29,7 +29,6 @@ export interface CleaningSummary {
   missingValuesFixed: number;
   outliersDetected: number;
   duplicatesRemoved: number;
-  columnsStandardized: number;
 }
 
 export interface CleaningIssue {
@@ -54,9 +53,7 @@ export interface CleaningOptions {
   handleMissingValues: 'impute' | 'drop' | 'replace';
   handleOutliers: 'remove' | 'flag' | 'cap';
   removeDuplicates: boolean;
-  standardizeColumns: boolean;
   replacementValue?: string; // Value to use when handleMissingValues is 'replace'
-  useLLM: boolean; // Always true, but kept for backward compatibility
   llmContextualCleaning: boolean; // Whether to use contextual cleaning for text fields
   llmDetectAnomalies: boolean; // Whether to use LLM to detect anomalies in data
   llmTemperature: number; // Control LLM creativity (0.0-1.0)

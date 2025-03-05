@@ -27,7 +27,6 @@ export const CleaningStateAnnotation = Annotation.Root({
       handleMissingValues: 'drop',
       handleOutliers: 'flag',
       removeDuplicates: true,
-      standardizeColumns: true,
       useLLM: false,
       llmContextualCleaning: false,
       llmDetectAnomalies: false,
@@ -69,10 +68,6 @@ export const CleaningStateAnnotation = Annotation.Root({
       insights: [],
       contextualIssues: new Map<string, { count: number; examples: string[] }>(),
     }),
-  }),
-  columnsStandardized: Annotation<number>({
-    reducer: (current, incoming) => incoming,
-    default: () => 0,
   }),
   issues: Annotation<CleaningIssue[]>({
     reducer: (current, incoming) => incoming,

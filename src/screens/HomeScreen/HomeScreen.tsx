@@ -70,7 +70,7 @@ const CardTitle = styled.h2`
 
 const UploadSummaryContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 1.5fr;
   gap: 2rem;
 `;
 
@@ -129,10 +129,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
     handleMissingValues: 'impute',
     handleOutliers: 'flag',
     removeDuplicates: true,
-    standardizeColumns: true,
     replacementValue: 'N/A',
-    // LLM options - always enabled
-    useLLM: true, // Always true
     llmContextualCleaning: true,
     llmDetectAnomalies: true,
     llmTemperature: 0.2,

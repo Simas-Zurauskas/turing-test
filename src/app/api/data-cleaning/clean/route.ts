@@ -36,7 +36,6 @@ export async function POST(request: Request) {
         handleMissingValues: 'drop',
         handleOutliers: 'flag',
         removeDuplicates: true,
-        standardizeColumns: true,
         useLLM: false,
         llmContextualCleaning: false,
         llmDetectAnomalies: false,
@@ -109,7 +108,6 @@ async function processDataCleaningWithGraph(
       insights: [],
       contextualIssues: new Map<string, { count: number; examples: string[] }>(),
     },
-    columnsStandardized: 0,
     issues: [],
   };
 

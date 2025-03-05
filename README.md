@@ -20,27 +20,31 @@ Sprint: AI Agents
    yarn dev
    ```
 
-Intelligent Data Cleaning with Customizable Cleaning Profiles
-Description:
-A system where users can define different cleaning profiles (Finance, Healthcare, Marketing, etc.), and agents collaborate to tailor cleaning rules based on the dataset's domain.
+## Application Overview
 
-Agents:
+### Intelligent Data Cleaning with Customizable Cleaning Profiles
 
-Profile Selector Agent
+This application provides an intelligent data cleaning platform that leverages AI to automatically detect and fix issues in datasets. It implements customizable cleaning profiles tailored to specific domains and data types, allowing users to:
 
-Analyzes the dataset and recommends a cleaning profile.
-Allows users to manually select a predefined cleaning profile.
-Cleaning Execution Agent
+- Analyze datasets to identify data quality issues
+- Apply intelligent cleaning operations with configurable parameters
+- Use AI-powered contextual cleaning for textual data
+- Generate comprehensive reports on data quality issues
 
-Performs the actual cleaning tasks based on the selected profile.
-Standardizes data formats (dates, numbers, currency, categorical values).
-Removes inconsistencies and outliers based on domain-specific rules.
-Validation & Summary Agent
+#### LangGraph Implementation
 
-Checks if the cleaned dataset conforms to industry-specific best practices.
-Provides a summary report with issues fixed, remaining concerns, and suggestions.
-Optional Upgrades:
+The data cleaning workflow is implemented as a directed graph using LangGraph:
 
-Integrate LLMs to detect contextual errors in textual fields.
-Allow users to tweak AI models (OpenAI vs. Open-Source LLMs).
-Provide real-time cost estimation of API usage.
+- **StateGraph Architecture**: The application uses a `StateGraph` to define a multi-stage cleaning pipeline
+- **Node-based Processing**: Each cleaning operation (missing value handling, outlier detection, etc.) is implemented as a separate node in the graph
+- **Deterministic Workflow**: The graph establishes a clear sequence of operations with defined data transformations at each step
+
+#### AI Agent Architecture
+
+The application implements AI agents for intelligent data operations:
+
+- **Analysis Agent**: Examines the dataset to identify potential issues, recommending appropriate cleaning strategies
+- **Cleaning Agent**: Applies contextual understanding to clean textual data, detecting and fixing inconsistencies
+- **Report Generator**: Creates detailed reports on the cleaning process and remaining data quality issues
+
+The agent system uses LangGraph to coordinate the different stages of processing, maintaining state throughout the cleaning workflow and ensuring each operation builds upon the results of previous steps.

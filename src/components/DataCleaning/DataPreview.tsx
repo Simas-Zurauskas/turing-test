@@ -207,7 +207,6 @@ const DataStatsBar: React.FC<DataStatsBarProps> = ({ dataset, currentData, clean
   <DataStats>
     <StatItem>Rows: {currentData.length}</StatItem>
     <StatItem>Columns: {dataset.headers.length}</StatItem>
-    <StatItem>File size: {formatFileSize(dataset.size)}</StatItem>
     <StatItem>Missing values: {calculateMissingValues(currentData)}</StatItem>
 
     {cleaningResult && activeTab === 'cleaned' && (

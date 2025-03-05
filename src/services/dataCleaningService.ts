@@ -7,6 +7,14 @@ import {
 } from '../types/dataCleaningTypes';
 
 /**
+ * API error response structure
+ */
+interface ErrorResponse {
+  error: string;
+  details?: unknown;
+}
+
+/**
  * Clean the dataset according to the specified profile and options
  * @param dataset The dataset to clean
  * @param profile The cleaning profile to use
@@ -19,7 +27,6 @@ export const cleanDataset = async (
   options: CleaningOptions,
 ): Promise<CleaningResult> => {
   try {
-    // Simple fetch request to the API
     const response = await fetch('/api/data-cleaning/clean', {
       method: 'POST',
       headers: {
@@ -29,14 +36,14 @@ export const cleanDataset = async (
     });
 
     if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.error || 'Failed to clean dataset');
+      const errorData = (await response.json()) as ErrorResponse;
+      throw new Error(errorData.error || `Failed to clean dataset: ${response.status}`);
     }
 
-    return await response.json();
+    return (await response.json()) as CleaningResult;
   } catch (error) {
     console.error('Error cleaning dataset:', error);
-    throw error;
+    throw error instanceof Error ? error : new Error('An unexpected error occurred while cleaning the dataset');
   }
 };
 
@@ -47,7 +54,6 @@ export const cleanDataset = async (
  */
 export const analyzeDataset = async (dataset: DatasetType): Promise<DatasetAnalysisResult> => {
   try {
-    // Call the API endpoint
     const response = await fetch('/api/data-cleaning/analyze', {
       method: 'POST',
       headers: {
@@ -57,14 +63,13 @@ export const analyzeDataset = async (dataset: DatasetType): Promise<DatasetAnaly
     });
 
     if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.error || 'Failed to analyze dataset');
+      const errorData = (await response.json()) as ErrorResponse;
+      throw new Error(errorData.error || `Failed to analyze dataset: ${response.status}`);
     }
 
-    // Return the full result object instead of just the recommendedDomain
-    return await response.json();
+    return (await response.json()) as DatasetAnalysisResult;
   } catch (error) {
     console.error('Error analyzing dataset:', error);
-    throw error;
+    throw error instanceof Error ? error : new Error('An unexpected error occurred while analyzing the dataset');
   }
 };

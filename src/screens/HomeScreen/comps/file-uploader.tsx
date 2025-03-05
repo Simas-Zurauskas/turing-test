@@ -3,7 +3,7 @@
 import { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import Papa, { ParseResult } from 'papaparse';
-import { Box, Typography, Button, CircularProgress, Alert } from '@mui/material';
+import { Box, Typography, Alert } from '@mui/material';
 import { Upload } from 'lucide-react';
 
 interface FileUploaderProps {

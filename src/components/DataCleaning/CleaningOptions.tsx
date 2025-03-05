@@ -81,7 +81,6 @@ interface CleaningOptionsProps {
     handleMissingValues: string;
     handleOutliers: string;
     removeDuplicates: boolean;
-    standardizeColumns: boolean;
     useLLM?: boolean;
     llmProvider?: string;
     llmContextualCleaning?: boolean;
@@ -234,18 +233,9 @@ export const CleaningOptions: React.FC<CleaningOptionsProps> = ({
       <CheckboxOption
         id="removeDuplicates"
         label="Remove duplicate rows"
-        description="Identify and remove duplicate records in the dataset."
+        description="Identify and remove duplicate entries in the dataset."
         checked={options.removeDuplicates}
         onChange={(checked) => onChange({ removeDuplicates: checked })}
-        disabled={disabled || isProcessing}
-      />
-
-      <CheckboxOption
-        id="standardizeColumns"
-        label="Standardize column names"
-        description="Convert column names to a consistent format (lowercase, spaces to underscores)."
-        checked={options.standardizeColumns}
-        onChange={(checked) => onChange({ standardizeColumns: checked })}
         disabled={disabled || isProcessing}
       />
 

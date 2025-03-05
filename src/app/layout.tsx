@@ -9,8 +9,8 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: 'Interview Simulator Bot',
-  description: 'Interview Simulator Bot',
+  title: 'Amazing CSV',
+  description: 'Amazing CSV',
 };
 
 export default function RootLayout({
