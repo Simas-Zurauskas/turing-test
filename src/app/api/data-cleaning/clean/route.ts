@@ -7,7 +7,6 @@ import {
   handleMissingValues,
   handleOutliers,
   removeDuplicates,
-  standardizeColumns,
   llmCleaning,
   generateIssuesReport,
   prepareResult,
@@ -70,7 +69,6 @@ async function processDataCleaningWithGraph(
     .addNode('handleMissingValues', handleMissingValues)
     .addNode('handleOutliers', handleOutliers)
     .addNode('removeDuplicates', removeDuplicates)
-    .addNode('standardizeColumns', standardizeColumns)
     .addNode('llmCleaning', llmCleaning)
     .addNode('generateIssuesReport', generateIssuesReport)
     .addNode('prepareResult', prepareResult)
@@ -80,8 +78,7 @@ async function processDataCleaningWithGraph(
     .addEdge(START, 'handleMissingValues')
     .addEdge('handleMissingValues', 'handleOutliers')
     .addEdge('handleOutliers', 'removeDuplicates')
-    .addEdge('removeDuplicates', 'standardizeColumns')
-    .addEdge('standardizeColumns', 'llmCleaning')
+    .addEdge('removeDuplicates', 'llmCleaning')
     .addEdge('llmCleaning', 'generateIssuesReport')
     .addEdge('generateIssuesReport', 'prepareResult')
     .addEdge('prepareResult', END);

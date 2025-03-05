@@ -47,7 +47,7 @@ export const llmCleaning: NodeFunction = async (state) => {
   if (textColumns.length > 0) {
     // Initialize LLM
     const llm = new ChatOpenAI({
-      modelName: 'gpt-3.5-turbo',
+      modelName: 'gpt-4o',
       temperature: options.llmTemperature || 0.2,
       maxTokens: options.llmMaxTokens || 1000,
     });
@@ -88,6 +88,7 @@ export const llmCleaning: NodeFunction = async (state) => {
         - Assign a confidence score to your correction (0.0-1.0)
         - DO NOT "overcorrect" - only fix clear issues
         - If the value appears correct, mark it as not needing cleaning
+        - Make sure to stick to the one format for each column
         
         # Input Batch
         {valueBatch}
@@ -122,7 +123,6 @@ export const llmCleaning: NodeFunction = async (state) => {
         if (valueBatch.length === 0) continue;
 
         try {
-          // Call the LLM to process this batch
           const result = await chain.invoke({
             columnContext: columnContext,
             profileDomain: profile.domain,

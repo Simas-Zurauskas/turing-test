@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { DatasetType, DataRow, CleaningResult } from '../../types/dataCleaningTypes';
+import { Tooltip } from '@mui/material';
 
 const TableContainer = styled.div`
   overflow-x: auto;
@@ -258,6 +259,45 @@ const hasCellChanged = (originalData: DataRow[], cleanedData: DataRow[], rowInde
   return originalRow[header] !== cleanedRow[header];
 };
 
+// Helper function to find the original value for a cell
+const getOriginalValue = (
+  originalData: DataRow[],
+  cleanedData: DataRow[],
+  rowIndex: number,
+  header: string,
+): string | null => {
+  // If we don't have original data, return null
+  if (!originalData || !cleanedData) return null;
+
+  // Find the corresponding row in the original data
+  const cleanedRow = cleanedData[rowIndex];
+
+  // Use the same matching function as in hasCellChanged
+  const isMatchingRow = (origRow: DataRow): boolean => {
+    let matchCount = 0;
+    let totalNonNullFields = 0;
+
+    for (const key of Object.keys(cleanedRow)) {
+      if (cleanedRow[key] !== null && origRow[key] !== null) {
+        totalNonNullFields++;
+        if (cleanedRow[key] === origRow[key]) {
+          matchCount++;
+        }
+      }
+    }
+
+    return totalNonNullFields > 0 && matchCount / totalNonNullFields > 0.7;
+  };
+
+  // Try to find the matching original row
+  const originalRow = originalData.find(isMatchingRow);
+
+  // If no matching row found, return null
+  if (!originalRow) return null;
+
+  return originalRow[header] === null ? 'NULL' : String(originalRow[header]);
+};
+
 const DataTable: React.FC<DataTableProps> = ({ headers, data, startIndex, originalData, isCleanedData }) => (
   <TableContainer>
     <Table>
@@ -277,14 +317,27 @@ const DataTable: React.FC<DataTableProps> = ({ headers, data, startIndex, origin
               // Check if this cell has changed from the original (only for cleaned data view)
               const hasChanged = isCleanedData && originalData && hasCellChanged(originalData, data, rowIndex, header);
 
+              // Get original value if changed
+              const originalValue = hasChanged ? getOriginalValue(originalData!, data, rowIndex, header) : null;
+
               // Use the appropriate cell component based on whether it changed
               const CellComponent = hasChanged ? ChangedCell : TableCell;
 
-              return (
-                <CellComponent key={header}>
-                  {row[header] === null ? <NullValue>NULL</NullValue> : String(row[header])}
-                </CellComponent>
-              );
+              const cellContent = row[header] === null ? <NullValue>NULL</NullValue> : String(row[header]);
+
+              // For changed cells, wrap in Tooltip
+              if (hasChanged && originalValue) {
+                return (
+                  <CellComponent key={header}>
+                    <Tooltip title={originalValue} arrow placement="top">
+                      <span>{cellContent}</span>
+                    </Tooltip>
+                  </CellComponent>
+                );
+              }
+
+              // For unchanged cells, render normally
+              return <CellComponent key={header}>{cellContent}</CellComponent>;
             })}
           </TableRow>
         ))}
